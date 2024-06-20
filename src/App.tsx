@@ -1,26 +1,29 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+ import { observer } from "mobx-react";
+import React, { useEffect } from "react";
 
-function App() {
+import booksRepository from "./Books/Books.repository";
+import AddBook from "./components/AddBook";
+import "./styles.css";
+
+const NoneObservableApp = ()=> {
+
+  useEffect(() => {
+    async function load() {
+      const books = await booksRepository.getBooks();
+    }
+    load();
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      {booksRepository.books.map((book, i) => (
+        <div key={i}>
+          {book.author}: {book.name}
+        </div>
+      ))}
+      <AddBook></AddBook>
     </div>
   );
 }
 
-export default App;
+export default observer(NoneObservableApp);
