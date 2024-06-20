@@ -36,7 +36,7 @@ class BooksModelClass {
 
   setPresentedBooksType(bookType:BookType){
     this.presentedBooksType = bookType
-    this.updatePresentedBooks
+    this.updatePresentedBooks()
   }
 
 }

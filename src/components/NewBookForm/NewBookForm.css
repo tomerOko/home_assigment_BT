@@ -1,17 +1,26 @@
-.grid {
-    display: grid;
-    padding-top: 16px;
-    grid-template-columns: 5fr 1fr;
-    column-gap: 16px;
-  }
-  
-  .input {
-    padding: 8px;
-    font-size: 16px;
-  }
-  
-  .button {
-    padding: 8px;
-    font-size: 16px;
-    cursor: pointer;
-  }
+.new-book-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.new-book-form input {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ced4da;
+  border-radius: 5px;
+}
+
+.new-book-form button {
+  padding: 10px;
+  font-size: 16px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.new-book-form button:hover {
+  background-color: #0056b3;
+}

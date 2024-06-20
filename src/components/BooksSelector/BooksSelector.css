@@ -1,0 +1,13 @@
+.books-selector {
+    margin: 20px 0;
+  }
+  
+  .books-selector label {
+    margin-right: 20px;
+    font-size: 16px;
+  }
+  
+  .books-selector input {
+    margin-right: 5px;
+  }
+  

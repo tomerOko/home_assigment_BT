@@ -1,37 +1,39 @@
 
 import { observer } from "mobx-react";
+import { addBook, updateNewBookAuthor, updateNewBookName } from "../../logic/Books/Books.ctrl";
+import { BooksModel } from "../../logic/Books/Books.model";
 
-import store from "../../Books/Books.model";
-import "./AddBook.css"; // Create a CSS file for custom styles
 
-function AddBook() {
+
+import React from 'react';
+import './NewBookForm.css';
+
+
+const NewBookForm = () => {
+
+
+  const handleSubmit = (event: React.FormEvent) => {
+    event.preventDefault();
+    addBook()
+  };
+
   return (
-    <div className="grid">
-
-        <input
-            className="input"
-            value={store.newBookName}
-            onChange={(evt) => {
-                store.newBookName = evt.target.value
-            }}
-            placeholder="New book name"
-            type="text"
-        />
-
-        <input
-            className="input"
-            value={store.newBookAuthor}
-            onChange={(evt) => {
-                store.newBookAuthor = evt.target.value
-            }}
-            placeholder="New book author"
-            type="text"
-        />
-
-        
-      <button className="button" onClick={() => store.addBook()}>Add Book</button>
-    </div>
+    <form className="new-book-form" onSubmit={handleSubmit}>
+      <input
+        type="text"
+        value={BooksModel.newBookName}
+        onChange={(evt) => updateNewBookName(evt.target.value)}
+        placeholder="New book name"
+      />
+      <input
+       value={BooksModel.newBookAuthor}
+       onChange={(evt) => updateNewBookAuthor(evt.target.value)}
+       placeholder="New book author"
+       type="text"
+      />
+      <button type="submit">Add Book</button>
+    </form>
   );
-}
+};
 
-export default observer(AddBook);
+export default observer(NewBookForm);

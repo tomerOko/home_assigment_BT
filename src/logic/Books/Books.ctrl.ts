@@ -1,7 +1,7 @@
-import { ApiGateway } from "../Shared/ApiGateway";
+import { ApiGateway } from "../../Shared/ApiGateway";
 import { BookType } from "./Books.types";
 import { BooksModel } from "./Books.model";
-import { BOOKS_API_BASE } from "../Shared/config";
+import { BOOKS_API_BASE } from "../../Shared/config";
 
 const booksApiGateway = new ApiGateway(BOOKS_API_BASE);
 const STATUS_OK = "ok";
@@ -50,8 +50,7 @@ export const setPresentedBooksType = (bookType: BookType): void => {
   BooksModel.setPresentedBooksType(bookType);
 };
 
-
-
+loadBooks()
 
   /**
    * update ui

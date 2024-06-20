@@ -1,22 +1,29 @@
  import { observer } from "mobx-react";
-import { useEffect } from "react";
 
-import booksRepository from "./Books/Books.repository";
-import "./styles.css";
 
-const NoneObservableApp = ()=> {
 
-  useEffect(() => {
-    async function load() {
-      const books = await booksRepository.getBooks();
-    }
-    load();
-  }, []);
- 
+import './styles.css';
+import BooksList from './components/BooksList/BooksList';
+import NewBookForm from './components/NewBookForm/NewBookForm';
+import PrivateBooksCounter from './components/PrivateBooksCounter/PrivateBooksCounter';
+import BooksSelector from "./components/BooksSelector/BooksSelector";
+
+
+
+const App= () => {
+
+
+
+
+
   return (
-    <>
-    </>
+    <div className="app">
+      <PrivateBooksCounter  />
+      <NewBookForm  />
+      <BooksSelector  />
+      <BooksList />
+    </div>
   );
-}
+};
 
-export default observer(NoneObservableApp);
+export default observer(App);
