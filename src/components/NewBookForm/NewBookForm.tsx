@@ -1,20 +1,24 @@
-
 import { observer } from "mobx-react";
 import { addBook, updateNewBookAuthor, updateNewBookName } from "../../logic/Books/Books.ctrl";
 import { BooksModel } from "../../logic/Books/Books.model";
-
-
-
-import React from 'react';
+import React, { useState } from 'react';
 import './NewBookForm.css';
 
-
 const NewBookForm = () => {
-
+  const [errorMessage, setErrorMessage] = useState("");
 
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
-    addBook()
+
+    const { newBookName, newBookAuthor } = BooksModel;
+
+    if (!newBookName.trim() || !newBookAuthor.trim()) {
+      setErrorMessage('Both book name and author are required.');
+      return;
+    }
+
+    setErrorMessage('');
+    addBook();
   };
 
   return (
@@ -31,6 +35,7 @@ const NewBookForm = () => {
        placeholder="New book author"
        type="text"
       />
+      {errorMessage && <div className="error-message">{errorMessage}</div>}
       <button type="submit">Add Book</button>
     </form>
   );
