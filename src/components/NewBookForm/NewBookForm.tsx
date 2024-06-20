@@ -1,7 +1,7 @@
-import React from "react";
+
 import { observer } from "mobx-react";
 
-import store from "../Books/Books.repository";
+import store from "../../Books/Books.model";
 import "./AddBook.css"; // Create a CSS file for custom styles
 
 function AddBook() {

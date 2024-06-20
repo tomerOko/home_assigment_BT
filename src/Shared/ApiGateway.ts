@@ -1,13 +1,14 @@
-import { API_BASE } from "./config";
+export class ApiGateway {
 
-export default class ApiGateway {
+  constructor(private apiBase: string){}
+
   get = async (path: string) => {
-    const response = await fetch(`${API_BASE}${path}`);
+    const response = await fetch(`${this.apiBase}${path}`);
     const dto = response.json();
     return dto;
   };
   post = async (path: string, payload: Record<string, any>) => {
-    const response = await fetch(`${API_BASE}${path}`, {
+    const response = await fetch(`${this.apiBase}${path}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -18,3 +19,4 @@ export default class ApiGateway {
     return dto;
   };
 }
+
